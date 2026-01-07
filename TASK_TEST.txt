@@ -1,0 +1,255 @@
+#Task1 Unicast
+
+We have implemented the L2 learning in the Task 4. Other tasks include the unicast forward. Here we test the requirement of 'traffic from one customer should not reach another customer'.
+
+eg. topo2
+There are 4 hosts connect to peswitch s1(h1 h3), s2(h2, h4). h1 and h2 belongs to A customer. h3, h4 are B customers. So the traffic from h1 will only sends to the h2. 
+We can see that the ip and mac addr of h2 are equal to h4 ("ip":"10.0.0.2/16", "mac":"00:00:0a:00:00:02"). So we take topo2 as an example to test the requirement. 
+
+In mininet, let h1 sends ping packets to the dst ipaddr. 
+
+one terminal for starting topology
+
+```bash
+sudo p4run --config 02-ethylene-p4app.json
+```
+
+one terminal for starting controller
+
+```bash
+sudo python routing-controller.py 02-ethylene-vpls.conf
+```
+
+We listen the packets at s2-eth1 and s2-eth2 which connects to the h2 and h4. Open another two terminals.
+
+```bash
+sudo tcpdump -enn -i s2-eth1
+```
+
+```bash
+sudo tcpdump -enn -i s2-eth2
+```
+
+Then in p4app.json terminal, type
+
+```bash
+mininet> h1 ping h2 -c10
+```
+
+We send ten packets and only the port connects to h2 receives the ICMP request and reply.
+
+
+
+#Task2 ECMP
+
+If there are two shortest paths, it will only select one path as the ecmp path.
+
+eg. topo6
+
+In mininet, let h3 sends ping packets to h5
+
+one terminal for starting topology
+
+```bash
+sudo p4run --config 06-aries-p4app.json
+```
+
+one terminal for starting controller
+
+```bash
+sudo python routing-controller.py 06-aries-vpls.conf
+```
+
+We listen the packets at s5-eth3 and s5-eth4 which connects to the s2 and s3. Open another two terminals.
+
+```bash
+sudo tcpdump -enn -i s5-eth3
+```
+
+```bash
+sudo tcpdump -enn -i s5-eth4
+```
+
+Then in p4app.json terminal, type
+
+```bash
+mininet> h3 ping h5 -c1
+```
+
+You can see there are packets going through these two ports which are ARP broadcast packets. If you check the rules in controller, you will see the ecmp rules inserted.
+
+Now open another two terminals and do these three options.
+
+```bash
+sudo tcpdump -enn -i s5-eth3
+```
+
+```bash
+sudo tcpdump -enn -i s5-eth4
+```
+
+Then in p4app.json terminal, type
+
+```bash
+mininet> h5 ping h3 -c1
+```
+
+Now you can see only one port has packets going through which means the peswitch has learnt the dstaddr and known how to route the packets to this dst host
+so the ecmp rule works and only one path has the sending packets.
+
+
+#Task3 Multicast
+
+eg. topo3
+
+In mininet, let h1 sends ping packets to h2 
+
+one terminal for starting topology
+
+```bash
+sudo p4run --config 03-cyclopropane-p4app.json
+```
+
+one terminal for starting controller
+
+```bash
+sudo python routing-controller.py 03-cyclopropane-vpls.conf
+```
+
+Then in p4app.json terminal, type
+
+```bash
+mininet> h1 arp -n
+```
+
+There is no arp rules right now.
+
+We listen the packets at s1-eth3 and s1-eth4 which connects to the s2 and s3. Open another two terminals.
+
+```bash
+sudo tcpdump -enn -i s1-eth3
+```
+
+```bash
+sudo tcpdump -enn -i s1-eth4
+```
+
+Then in p4app.json terminal, type
+
+```bash
+mininet> h1 ping h2 -c1
+```
+
+Here the src peswitch actually not knows how to route the packets to the dst mac addr, so it broadcasts the packets to the dst peswitch which has the same pw_id host. 
+You can see there are broadcast packets in both s1-eth3 and s1-eth4 port. 
+There are more packets in s1-eth3 port because this is the right tunnel to the dst peswitch and dst host. So there are several ICMP request and reply packets.
+
+You can also run the test file 'sudo bash test_topology_03.sh' in a terminal.
+
+Then in p4app.json terminal, type
+
+```bash
+mininet> h1 arp -n
+```
+
+There are some arp rules present.
+
+
+
+#Task4 L2 learning
+
+Continue with #Task3
+
+We have already domenstrated the broadcast functions. We can see the ICMP request and reply packets in the s1-eth3 port which means the dst peswitch s2 also knows how to route
+the packets to the src host. 
+
+To make things more clear:
+
+In p4app.json terminal, type
+
+```bash
+mininet> h2 ping h1 -c1
+```
+We listen the packets at s2-eth3 and s2-eth4 which connects to the s1 and s3. Open another two terminals.
+
+```bash
+sudo tcpdump -enn -i s2-eth3
+```
+
+```bash
+sudo tcpdump -enn -i s2-eth4
+```
+
+h2 ping h1 is the backway of h1 ping h2.
+
+We can see there is no packets going through the s2-eth4 which means there is no broadcasting. This peswitch has already known how to route the packets to this dst host.
+The peswitch has learnt the dst addr in the process of 'h1 ping h2'.
+
+
+A special situation of topo6:
+One peswitch has two hosts with same pwid.
+
+One terminal for starting topology
+
+```bash
+sudo p4run --config 06-aries-p4app.json
+```
+
+One terminal for starting controller
+
+```bash
+sudo python routing-controller.py 06-aries-vpls.conf
+```
+
+In mininet, let h3 sends ping packets to h5 
+
+We listen the packets at s4-eth2, s5-eth1 and s5-eth2 which connects to h4, h5 and h6. Open another three terminals.
+
+```bash
+sudo tcpdump -enn -i s4-eth2
+```
+
+```bash
+sudo tcpdump -enn -i s5-eth1
+```
+
+```bash
+sudo tcpdump -enn -i s5-eth2
+```
+
+Then in p4app.json terminal, type
+
+```bash
+mininet> h3 ping h5 -c1
+```
+
+You can see the broadcast packets going through these three ports. When you perform 'h5 ping h3', h3, h4 and h6 will receive the broadcast packets. 
+
+
+
+
+
+Commands list:
+
+cd /media/shared/projectcode2026-1-1
+
+sudo p4run --config 01-methane-p4app.json
+sudo p4run --config 02-ethylene-p4app.json
+sudo p4run --config 03-cyclopropane-p4app.json
+sudo p4run --config 04-rooster-p4app.json
+sudo p4run --config 05-dioxetane-p4app.json
+sudo p4run --config 06-aries-p4app.json
+
+sudo python routing-controller.py 01-methane-vpls.conf
+sudo python routing-controller.py 02-ethylene-vpls.conf
+sudo python routing-controller.py 03-cyclopropane-vpls.conf
+sudo python routing-controller.py 04-rooster-vpls.conf
+sudo python routing-controller.py 05-dioxetane-vpls.conf
+sudo python routing-controller.py 06-aries-vpls.conf
+
+sudo bash test_topology_06.sh
+
+
+cd /media/shared/projectcode2026-1-1/log
+
+truncate -s 0 s{1,2,3,4,5,6}.log
