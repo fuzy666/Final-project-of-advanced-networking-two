@@ -1,0 +1,60 @@
+h1 to h2
+Connecting to host 10.0.0.2, port 5201
+[  8] local 10.0.0.1 port 51344 connected to 10.0.0.2 port 5201
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  8]   0.00-0.25   sec  36.7 KBytes  1.22 Mbits/sec    0   9.65 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  8]   0.00-0.25   sec  36.7 KBytes  1.22 Mbits/sec    0             sender
+[  8]   0.00-0.25   sec  28.0 KBytes   932 Kbits/sec                  receiver
+
+iperf Done.
+h1 to h3
+iperf3: error - unable to connect to server: Connection refused
+h1 to h4
+iperf3: error - unable to connect to server: Connection refused
+h2 to h1
+Connecting to host 10.0.0.1, port 5201
+[  8] local 10.0.0.2 port 51584 connected to 10.0.0.1 port 5201
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  8]   0.00-0.22   sec  36.7 KBytes  1.39 Mbits/sec    0   9.65 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  8]   0.00-0.22   sec  36.7 KBytes  1.39 Mbits/sec    0             sender
+[  8]   0.00-0.22   sec  21.2 KBytes   804 Kbits/sec                  receiver
+
+iperf Done.
+h2 to h3
+iperf3: error - unable to connect to server: Connection refused
+h2 to h4
+iperf3: error - unable to connect to server: Connection refused
+h3 to h1
+iperf3: error - unable to connect to server: Connection refused
+h3 to h2
+iperf3: error - unable to connect to server: Connection refused
+h3 to h4
+Connecting to host 10.0.0.2, port 5201
+[  8] local 10.0.0.1 port 51364 connected to 10.0.0.2 port 5201
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  8]   0.00-0.31   sec  36.7 KBytes   972 Kbits/sec    0   9.65 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  8]   0.00-0.31   sec  36.7 KBytes   972 Kbits/sec    0             sender
+[  8]   0.00-0.31   sec  24.1 KBytes   640 Kbits/sec                  receiver
+
+iperf Done.
+h4 to h1
+iperf3: error - unable to connect to server: Connection refused
+h4 to h2
+iperf3: error - unable to connect to server: Connection refused
+h4 to h3
+Connecting to host 10.0.0.1, port 5201
+[  8] local 10.0.0.2 port 51604 connected to 10.0.0.1 port 5201
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  8]   0.00-0.29   sec  36.7 KBytes  1.04 Mbits/sec    0   9.65 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  8]   0.00-0.29   sec  36.7 KBytes  1.04 Mbits/sec    0             sender
+[  8]   0.00-0.29   sec  5.79 KBytes   165 Kbits/sec                  receiver
+
+iperf Done.

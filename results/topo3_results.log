@@ -1,0 +1,168 @@
+h1 to h2
+Connecting to host 10.0.0.2, port 5201
+[  8] local 10.0.0.1 port 39522 connected to 10.0.0.2 port 5201
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  8]   0.00-0.26   sec  36.7 KBytes  1.15 Mbits/sec    0   9.65 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  8]   0.00-0.26   sec  36.7 KBytes  1.15 Mbits/sec    0             sender
+[  8]   0.00-0.26   sec  5.79 KBytes   182 Kbits/sec                  receiver
+
+iperf Done.
+h1 to h3
+iperf3: error - unable to connect to server: Connection refused
+h1 to h4
+iperf3: error - unable to connect to server: Connection refused
+h1 to h5
+Connecting to host 10.0.0.5, port 5201
+[  8] local 10.0.0.1 port 39770 connected to 10.0.0.5 port 5201
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  8]   0.00-0.35   sec  36.7 KBytes   858 Kbits/sec    0   9.65 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  8]   0.00-0.35   sec  36.7 KBytes   858 Kbits/sec    0             sender
+[  8]   0.00-0.35   sec  36.7 KBytes   858 Kbits/sec                  receiver
+
+iperf Done.
+h1 to h6
+iperf3: error - unable to connect to server: No route to host
+h2 to h1
+Connecting to host 10.0.0.1, port 5201
+[  8] local 10.0.0.2 port 39768 connected to 10.0.0.1 port 5201
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  8]   0.00-0.25   sec  36.7 KBytes  1.22 Mbits/sec    0   9.65 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  8]   0.00-0.25   sec  36.7 KBytes  1.22 Mbits/sec    0             sender
+[  8]   0.00-0.25   sec  36.7 KBytes  1.22 Mbits/sec                  receiver
+
+iperf Done.
+h2 to h3
+iperf3: error - unable to connect to server: Connection refused
+h2 to h4
+iperf3: error - unable to connect to server: Connection refused
+h2 to h5
+Connecting to host 10.0.0.5, port 5201
+[  8] local 10.0.0.2 port 33494 connected to 10.0.0.5 port 5201
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  8]   0.00-0.39   sec  36.7 KBytes   768 Kbits/sec    0   9.65 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  8]   0.00-0.39   sec  36.7 KBytes   768 Kbits/sec    0             sender
+[  8]   0.00-0.39   sec  29.9 KBytes   626 Kbits/sec                  receiver
+
+iperf Done.
+h2 to h6
+iperf3: error - unable to connect to server: No route to host
+h3 to h1
+iperf3: error - unable to connect to server: Connection refused
+h3 to h2
+iperf3: error - unable to connect to server: Connection refused
+h3 to h4
+Connecting to host 10.0.0.2, port 5201
+[  8] local 10.0.0.1 port 39554 connected to 10.0.0.2 port 5201
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  8]   0.00-0.33   sec  36.7 KBytes   911 Kbits/sec    1   9.65 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  8]   0.00-0.33   sec  36.7 KBytes   911 Kbits/sec    1             sender
+[  8]   0.00-0.33   sec  5.79 KBytes   144 Kbits/sec                  receiver
+
+iperf Done.
+h3 to h5
+iperf3: error - unable to connect to server: No route to host
+h3 to h6
+Connecting to host 10.0.0.6, port 5201
+[  8] local 10.0.0.1 port 55566 connected to 10.0.0.6 port 5201
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  8]   0.00-0.41   sec  36.7 KBytes   729 Kbits/sec    1   9.65 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  8]   0.00-0.41   sec  36.7 KBytes   729 Kbits/sec    1             sender
+[  8]   0.00-0.41   sec  28.9 KBytes   576 Kbits/sec                  receiver
+
+iperf Done.
+h4 to h1
+iperf3: error - unable to connect to server: Connection refused
+h4 to h2
+iperf3: error - unable to connect to server: Connection refused
+h4 to h3
+Connecting to host 10.0.0.1, port 5201
+[  8] local 10.0.0.2 port 39800 connected to 10.0.0.1 port 5201
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  8]   0.00-0.35   sec  36.7 KBytes   858 Kbits/sec    0   9.65 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  8]   0.00-0.35   sec  36.7 KBytes   858 Kbits/sec    0             sender
+[  8]   0.00-0.35   sec  5.79 KBytes   135 Kbits/sec                  receiver
+
+iperf Done.
+h4 to h5
+iperf3: error - unable to connect to server: No route to host
+h4 to h6
+Connecting to host 10.0.0.6, port 5201
+[  8] local 10.0.0.2 port 46704 connected to 10.0.0.6 port 5201
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  8]   0.00-0.41   sec  36.7 KBytes   729 Kbits/sec    0   9.65 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  8]   0.00-0.41   sec  36.7 KBytes   729 Kbits/sec    0             sender
+[  8]   0.00-0.41   sec  5.79 KBytes   115 Kbits/sec                  receiver
+
+iperf Done.
+h5 to h1
+Connecting to host 10.0.0.1, port 5201
+[  8] local 10.0.0.5 port 43488 connected to 10.0.0.1 port 5201
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  8]   0.00-0.35   sec  36.7 KBytes   858 Kbits/sec    0   9.65 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  8]   0.00-0.35   sec  36.7 KBytes   858 Kbits/sec    0             sender
+[  8]   0.00-0.35   sec  18.3 KBytes   429 Kbits/sec                  receiver
+
+iperf Done.
+h5 to h2
+Connecting to host 10.0.0.2, port 5201
+[  8] local 10.0.0.5 port 38204 connected to 10.0.0.2 port 5201
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  8]   0.00-0.37   sec  36.7 KBytes   810 Kbits/sec    0   9.65 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  8]   0.00-0.37   sec  36.7 KBytes   810 Kbits/sec    0             sender
+[  8]   0.00-0.37   sec  6.75 KBytes   149 Kbits/sec                  receiver
+
+iperf Done.
+h5 to h3
+iperf3: error - unable to connect to server: Connection refused
+h5 to h4
+iperf3: error - unable to connect to server: Connection refused
+h5 to h6
+iperf3: error - unable to connect to server: No route to host
+h6 to h1
+iperf3: error - unable to connect to server: Connection refused
+h6 to h2
+iperf3: error - unable to connect to server: Connection refused
+h6 to h3
+Connecting to host 10.0.0.1, port 5201
+[  8] local 10.0.0.6 port 55404 connected to 10.0.0.1 port 5201
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  8]   0.00-0.43   sec  36.7 KBytes   693 Kbits/sec    0   9.65 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  8]   0.00-0.43   sec  36.7 KBytes   693 Kbits/sec    0             sender
+[  8]   0.00-0.43   sec  28.0 KBytes   529 Kbits/sec                  receiver
+
+iperf Done.
+h6 to h4
+Connecting to host 10.0.0.2, port 5201
+[  8] local 10.0.0.6 port 56934 connected to 10.0.0.2 port 5201
+[ ID] Interval           Transfer     Bandwidth       Retr  Cwnd
+[  8]   0.00-0.41   sec  36.7 KBytes   728 Kbits/sec    0   9.65 KBytes       
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth       Retr
+[  8]   0.00-0.41   sec  36.7 KBytes   728 Kbits/sec    0             sender
+[  8]   0.00-0.41   sec  6.75 KBytes   134 Kbits/sec                  receiver
+
+iperf Done.
+h6 to h5
+iperf3: error - unable to connect to server: No route to host
