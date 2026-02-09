@@ -76,7 +76,7 @@ Then in p4app.json terminal, type
 mininet> h3 ping h5 -c1
 ```
 
-You can see there are packets going through these two ports which are ARP broadcast packets. If you check the rules in controller, you will see the ecmp rules inserted.
+You can see there are packets going through these two ports which are ARP broadcast packets. If you check the rules in controller, you will see the ecmp rules inserted at s5.
 
 Now open another two terminals and do these three options.
 
@@ -140,11 +140,9 @@ Then in p4app.json terminal, type
 mininet> h1 ping h2 -c1
 ```
 
-Here the src peswitch actually not knows how to route the packets to the dst mac addr, so it broadcasts the packets to the dst peswitch which has the same pw_id host. 
+Here the src peswitch actually not knows how to route the packets to the dst addr, so it broadcasts the packets to the dst peswitch which has the same pw_id host. 
 You can see there are broadcast packets in both s1-eth3 and s1-eth4 port. 
 There are more packets in s1-eth3 port because this is the right tunnel to the dst peswitch and dst host. So there are several ICMP request and reply packets.
-
-You can also run the test file 'sudo bash test_topology_03.sh' in a terminal.
 
 Then in p4app.json terminal, type
 
@@ -154,6 +152,7 @@ mininet> h1 arp -n
 
 There are some arp rules present.
 
+You can also run the test file 'sudo bash test_topology_03.sh' in a terminal. There are more arp rules present.
 
 
 #Task4 L2 learning
@@ -223,7 +222,9 @@ Then in p4app.json terminal, type
 mininet> h3 ping h5 -c1
 ```
 
-You can see the broadcast packets going through these three ports. When you perform 'h5 ping h3', h3, h4 and h6 will receive the broadcast packets. 
+You can see the broadcast packets going through these three ports. 
+
+If you restart above actions and perform 'h5 ping h3', h3, h4 and h6 will receive the broadcast packets. 
 
 
 
@@ -251,5 +252,6 @@ sudo bash test_topology_06.sh
 
 
 cd /media/shared/projectcode2026-1-1/log
+
 
 truncate -s 0 s{1,2,3,4,5,6}.log
