@@ -75,8 +75,7 @@ class EventBasedController(threading.Thread):
         for mac_addr, ingress_port, learnType, tunnel_id, pw_id in  packet_data:
             print "mac: %012X ingress_port: %s " % (mac_addr, ingress_port)
 
-            # Add an entry to vpls_dmac
-            # get the pw_id
+            # the learning process at src peswitch, learn how to reach the src host
             if (learnType == TYPE_MAC_LEARN):
                 # Add an entry to smac
                 print "type MAC learn at " + str(self.sw_name) + " controller"
@@ -91,6 +90,7 @@ class EventBasedController(threading.Thread):
                 for sw_ingress_port in self.sw_pw_connectedHostPorts.get(pw_id,[]):
                     self.controller.table_add("dmac", "mac_forward", [str(mac_addr), str(sw_ingress_port)], [str(ingress_port)])
 
+            # the learning process at dst peswitch, learn how to reach the src host(single path or ecmp path)
             elif (learnType == TYPE_VPLS_LEARN):
                 # Add an entry to smac
                 print "type vpls learn at " + str(self.sw_name) + " controller"
@@ -273,7 +273,7 @@ class RoutingController(object):
                     self.sw_pw_connectedHostPorts[sw_src][pw_id] = ports[:]
 
                 for sw_dst in PEs:
-                    #if its ourselves we create direct connections when srcpe is equal to dstpe
+                    #at each peswitch, add rules to point out this is a src or dst pe switch
                     if sw_src == sw_dst:
                         for host in self.topo.get_hosts_connected_to(sw_src):
                             sw_port = self.topo.node_to_node_port_num(sw_src, host)
@@ -282,7 +282,7 @@ class RoutingController(object):
                             self.controllers[sw_src].table_add("check_is_ingress_border", "set_is_ingress_border", [str(sw_port)])
                             self.controllers[sw_src].table_add("check_is_egress_border", "is_egress_border", [str(sw_port)])
 
-                    #check if there are directly connected hosts and they have same customers
+                    #only build tunnels between peswitches which have same customers
                     elif sw_pwids[sw_src] & sw_pwids[sw_dst]:
                         # if self.topo.get_hosts_connected_to(sw_dst):
                         paths = self.topo.get_shortest_paths_between_nodes(sw_src, sw_dst)
